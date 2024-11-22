@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Platform, Dimensions, StyleSheet, Text, View } from "react-native";
 
 import React, { FunctionComponent, useState } from "react";
 import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
@@ -38,14 +38,18 @@ const Portfolio: FunctionComponent = () => {
           translateY: interpolate(
             scrollOffset.value,
             [-IMG_HEIGHT, 0, IMG_HEIGHT],
-            [-IMG_HEIGHT / 2, 0, IMG_HEIGHT * 0.75]
+            [
+              -IMG_HEIGHT / 2,
+              0,
+              IMG_HEIGHT * (Platform.OS === "web" ? 0.97 : 0.51),
+            ]
           ),
         },
         {
           scale: interpolate(
             scrollOffset.value,
             [-IMG_HEIGHT, 0, IMG_HEIGHT],
-            [2, 1, 1]
+            [3, 0.73, 1]
           ),
         },
       ],
@@ -64,12 +68,12 @@ const Portfolio: FunctionComponent = () => {
         >
           {/* Top Parallax Image */}
           <Animated.Image
-            source={require("./assets/images/logos/logo-pp.png")}
+            source={require("./assets/images/icon.png")}
             style={[styles.image, imageAnimatedStyle]}
           />
 
           {/* Parallax Content */}
-          <View style={{ height: 700, backgroundColor: "whitesmoke" }}>
+          <View style={{ height: 700, backgroundColor: "white" }}>
             <Text
               style={{
                 color: "slategrey",
