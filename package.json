@@ -12,6 +12,8 @@
     "@expo/metro-runtime": "^4.0.0",
     "@expo/vector-icons": "^14.0.4",
     "@lottiefiles/dotlottie-react": "^0.10.0",
+    "@rneui/base": "4.0.0-rc.8",
+    "@rneui/themed": "4.0.0-rc.8",
     "expo": "~52.0.11",
     "expo-splash-screen": "^0.29.13",
     "expo-status-bar": "~2.0.0",

@@ -2,9 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Platform, Dimensions, StyleSheet, Text, View } from "react-native";
-
 import React, { FunctionComponent, useState } from "react";
-import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
 
 import Animated, {
   interpolate,
@@ -14,6 +12,9 @@ import Animated, {
   useAnimatedScrollHandler,
 } from "react-native-reanimated";
 import useCachedResources from "./app/hooks/useCachedResources";
+
+import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
+import DevProfile from "./app/DevProfile";
 
 SplashScreen.hide();
 
@@ -73,19 +74,7 @@ const Portfolio: FunctionComponent = () => {
           />
 
           {/* Parallax Content */}
-          <View style={{ height: 700, backgroundColor: "white" }}>
-            <Text
-              style={{
-                color: "slategrey",
-                fontSize: 17,
-                fontWeight: "300",
-                textAlign: "center",
-                fontFamily: "proxima-regular",
-              }}
-            >
-              Cross-Platform Digital Portfolio
-            </Text>
-          </View>
+          <DevProfile />
         </Animated.ScrollView>
         <StatusBar style="light" backgroundColor="black" />
       </SafeAreaView>
