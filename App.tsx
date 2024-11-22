@@ -1,20 +1,82 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+import Animated, {
+  interpolate,
+  useAnimatedRef,
+  useAnimatedStyle,
+  useScrollViewOffset,
+} from "react-native-reanimated";
+import useCachedResources from "./app/hooks/useCachedResources";
+
+const { width } = Dimensions.get("window");
+const IMG_HEIGHT = 300;
+
+const Portfolio = () => {
+  useCachedResources();
+
+  const scrollRef = useAnimatedRef<Animated.ScrollView>();
+  const scrollOffset = useScrollViewOffset(scrollRef);
+
+  const imageAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: interpolate(
+            scrollOffset.value,
+            [-IMG_HEIGHT, 0, IMG_HEIGHT],
+            [-IMG_HEIGHT / 2, 0, IMG_HEIGHT * 0.75]
+          ),
+        },
+        {
+          scale: interpolate(
+            scrollOffset.value,
+            [-IMG_HEIGHT, 0, IMG_HEIGHT],
+            [2, 1, 1]
+          ),
+        },
+      ],
+    };
+  });
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Animated.ScrollView ref={scrollRef} scrollEventThrottle={17}>
+        {/* Top Parallax Image */}
+        <Animated.Image
+          source={require("./assets/images/logos/logo-pp.png")}
+          style={[styles.image, imageAnimatedStyle]}
+        />
+
+        {/* Parallax Content */}
+        <View style={{ height: 700, backgroundColor: "whitesmoke" }}>
+          <Text
+            style={{
+              color: "slategrey",
+              fontSize: 17,
+              fontWeight: "300",
+              textAlign: "center",
+              fontFamily: "proxima-regular",
+            }}
+          >
+            Cross-Platform Digital Portfolio
+          </Text>
+        </View>
+      </Animated.ScrollView>
+      <StatusBar style="light" backgroundColor="black" />
+    </SafeAreaView>
   );
-}
+};
+export default Portfolio;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "whitesmoke",
+  },
+  image: {
+    width: width,
+    height: IMG_HEIGHT,
   },
 });
