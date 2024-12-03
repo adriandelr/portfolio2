@@ -35,7 +35,7 @@ export default function DevProfile() {
       >
         <Text
           style={{
-            maxWidth: Platform.OS === "web" ? "37%" : "83%",
+            maxWidth: Platform.OS === "web" ? "35.7%" : "83%",
             fontFamily: "proxima-regular",
             color: "grey",
             fontSize: 15,
@@ -44,14 +44,14 @@ export default function DevProfile() {
         >
           Adrian is a web developer focused on developing Cross-Platform
           applications using Front-End technologies. He has been delivering
-          various solutions, ranging from UI and Animation to communication,
-          computation, and modulation of client-side data and content for the
+          various solutions, ranging from UI and animation to computation,
+          communication, and modularity of client-side data and content for the
           past nine (9) years.
           {"\n"}
           {"\n"}
           Recently, he handled projects as a UI Hybrid Mobile Developer for a
-          US-based client Tollway Group, and supported Accenture's Business
-          Development for a Hong Kong-based Housing Provider. He facilitated a
+          US-based client Tollway group, and supported Accenture's Business
+          Development for a Hong Kong-based Housing provider. He facilitated a
           two-day boot camp course on a web framework for onboarding recruits.
           {"\n"}
           {"\n"}

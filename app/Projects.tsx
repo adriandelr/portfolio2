@@ -10,11 +10,7 @@ import * as React from "react";
 import { useSharedValue } from "react-native-reanimated";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 
-const projData = [
-  require("../assets/images/projects/proj-acn.png"),
-  require("../assets/images/projects/proj-acn-1.png"),
-  require("../assets/images/projects/proj-acn-3.png"),
-];
+import { PROJECTS } from "./constants/Projects";
 
 const getMaxWidth = () => {
   let width = Dimensions.get("window").width;
@@ -31,63 +27,80 @@ export default function Projects() {
       <Text
         style={{
           color: "dimgrey",
-          fontSize: 21,
+          fontSize: Platform.OS === "web" ? 27 : 21,
           textAlign: "center",
           fontFamily: 'proxima-extrabold"',
-          marginVertical: 20,
+          marginTop: Platform.OS === "web" ? 50 : 0,
+          marginVertical: Platform.OS === "web" ? 0 : 20,
         }}
       >
         SHOWCASE
       </Text>
 
-      <Carousel
-        ref={ref}
-        width={getMaxWidth()}
-        height={getMaxWidth() / 2}
-        data={projData}
-        onProgressChange={progress}
-        mode="parallax"
-        modeConfig={{
-          parallaxScrollingScale: Platform.OS === "web" ? 0.7 : 0.8,
-          parallaxScrollingOffset: Platform.OS === "web" ? 100 : 57,
-          parallaxAdjacentItemScale: Platform.OS === "web" ? 0.8 : 0.8,
-        }}
-        renderItem={({ index }) => (
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "center",
-              backgroundColor:
-                Platform.OS === "web" ? "transparent" : "lightgrey",
-              borderWidth: Platform.OS === "web" ? 1 : 0,
-              borderColor: "lightgrey",
-              borderRadius: 3,
+      {PROJECTS.map((project: any, i: number) => (
+        <View
+          key={i}
+          style={{
+            marginBottom: Platform.OS === "web" ? 0 : 90,
+          }}
+        >
+          <Carousel
+            ref={ref}
+            width={getMaxWidth()}
+            height={getMaxWidth() / 2}
+            data={project.images}
+            onProgressChange={progress}
+            mode="parallax"
+            modeConfig={{
+              parallaxScrollingScale: Platform.OS === "web" ? 0.7 : 0.8,
+              parallaxScrollingOffset: Platform.OS === "web" ? 100 : 57,
+              parallaxAdjacentItemScale: Platform.OS === "web" ? 0.8 : 0.8,
             }}
-          >
-            <Image
-              style={{
-                alignSelf: "center",
-                flex: 1,
-                transform: [{ scale: Platform.OS === "web" ? 1 : 1.57 }],
-                width: Platform.OS === "web" ? "100%" : "57%",
-                backgroundColor:
-                  Platform.OS === "web" ? "transparent" : "#101111",
-              }}
-              source={projData[index]}
-              resizeMode="contain"
-            />
-          </View>
-        )}
-      />
+            renderItem={({ index }) => (
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  backgroundColor:
+                    Platform.OS === "web" ? "transparent" : "lightgrey",
+                  borderWidth: Platform.OS === "web" ? 1 : 0,
+                  borderColor: "lightgrey",
+                  borderRadius: 3,
+                  width: "100%",
+                  shadowColor: "dimgrey",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.1,
+                  shadowRadius: 1,
+                  elevation: 4,
+                }}
+              >
+                <Image
+                  style={{
+                    alignSelf: "center",
+                    flex: 1,
+                    transform: [{ scale: Platform.OS === "web" ? 1 : 1.57 }],
+                    width: Platform.OS === "web" ? "100%" : "57%",
+                    backgroundColor:
+                      Platform.OS === "web" ? "transparent" : "#101111",
+                  }}
+                  source={project.images[index]}
+                  resizeMode="contain"
+                />
+              </View>
+            )}
+          />
+        </View>
+      ))}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: 700,
+    height: "auto",
     backgroundColor: "whitesmoke",
     flex: 1,
     alignItems: "center",
+    marginBottom: Platform.OS === "web" ? 35 : 45,
   },
 });
