@@ -11,10 +11,12 @@ import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
 } from "react-native-reanimated";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import useCachedResources from "./app/hooks/useCachedResources";
 
 import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
-import DevProfile from "./app/DevProfile";
+import Profile from "./app/Profile";
+import Projects from "./app/Projects";
 
 SplashScreen.hide();
 
@@ -60,25 +62,28 @@ const Portfolio: FunctionComponent = () => {
   return !animationCompleted && !isLoadingComplete ? (
     <AnimatedSplashScreen onFinish={changeAnimationStatus} />
   ) : (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <Animated.ScrollView
-          ref={scrollRef}
-          onScroll={scrollHandler}
-          scrollEventThrottle={17}
-        >
-          {/* Top Parallax Image */}
-          <Animated.Image
-            source={require("./assets/images/icon.png")}
-            style={[styles.image, imageAnimatedStyle]}
-          />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <Animated.ScrollView
+            ref={scrollRef}
+            onScroll={scrollHandler}
+            scrollEventThrottle={17}
+          >
+            {/* Top Parallax Image */}
+            <Animated.Image
+              source={require("./assets/images/icon.png")}
+              style={[styles.image, imageAnimatedStyle]}
+            />
 
-          {/* Parallax Content */}
-          <DevProfile />
-        </Animated.ScrollView>
-        <StatusBar style="light" backgroundColor="black" />
-      </SafeAreaView>
-    </SafeAreaProvider>
+            {/* Parallax Content */}
+            <Profile />
+            <Projects />
+          </Animated.ScrollView>
+          <StatusBar style="light" backgroundColor="black" />
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 };
 export default Portfolio;
