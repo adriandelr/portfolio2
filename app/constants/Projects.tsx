@@ -2,6 +2,28 @@ import { Platform } from "react-native";
 
 export const PROJECTS: any = [
   {
+    date: "Mar 2021 - April 2024",
+    duration: "3 years 1 months",
+    title: "BCS Technology International Pty Ltd",
+    description: `
+    Responsible for delivering a complete, functional, tested, and responsive Front-End application
+using Nuxt/VueJS. Develop a two-page component-based application with complexity in UI:
+search, filters, multiple dialogs, cards, custom calendars, translation, etc. based on user stories,
+design, and feature specifications.
+`,
+    image: require("../../assets/images/logos/logo-bcs.png"),
+    images: [
+      require("../../assets/images/projects/proj-bcs.png"),
+      require("../../assets/images/projects/proj-bcs-1.png"),
+      require("../../assets/images/projects/proj-bcs-2.png"),
+      require("../../assets/images/projects/proj-bcs-3.png"),
+      require("../../assets/images/projects/proj-bcs-4.png"),
+      require("../../assets/images/projects/proj-bcs-5.png"),
+      require("../../assets/images/projects/proj-bcs-6.png"),
+      require("../../assets/images/projects/proj-bcs-7.png"),
+    ],
+  },
+  {
     date: "Sept 2017 - Mar 2020",
     duration: "2 years 7 months",
     title: "Hospitality Marketing Concepts LLC",
