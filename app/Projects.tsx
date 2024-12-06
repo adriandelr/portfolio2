@@ -30,7 +30,7 @@ export default function Projects() {
           fontSize: Platform.OS === "web" ? 27 : 21,
           textAlign: "center",
           fontFamily: 'proxima-extrabold"',
-          marginTop: Platform.OS === "web" ? 50 : 0,
+          marginTop: Platform.OS === "web" ? 50 : 20,
           marginVertical: Platform.OS === "web" ? 0 : 20,
         }}
       >
@@ -41,6 +41,7 @@ export default function Projects() {
         <View
           key={i}
           style={{
+            position: "relative",
             marginBottom: Platform.OS === "web" ? 0 : 90,
           }}
         >
@@ -99,8 +100,7 @@ const styles = StyleSheet.create({
   container: {
     height: "auto",
     backgroundColor: "whitesmoke",
-    flex: 1,
     alignItems: "center",
-    marginBottom: Platform.OS === "web" ? 35 : 45,
+    paddingBottom: Platform.OS === "web" ? 35 : 45,
   },
 });

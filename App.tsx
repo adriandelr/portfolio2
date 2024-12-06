@@ -17,6 +17,7 @@ import useCachedResources from "./app/hooks/useCachedResources";
 import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
 import Profile from "./app/Profile";
 import Projects from "./app/Projects";
+import Platforms from "./app/Platforms";
 
 SplashScreen.hide();
 
@@ -78,7 +79,12 @@ const Portfolio: FunctionComponent = () => {
 
             {/* Parallax Content */}
             <Profile />
+
+            {/* Projects Showcase */}
             <Projects />
+
+            {/* Platform Specific */}
+            <Platforms />
           </Animated.ScrollView>
           <StatusBar style="light" backgroundColor="black" />
         </SafeAreaView>
