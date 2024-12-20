@@ -36,6 +36,9 @@
     },
     "updates": {
       "url": "https://u.expo.dev/b6005ca1-f261-4b9d-8b27-918a03477a19"
+    },
+    "experiments": {
+      "baseUrl": "/portfolio2"
     }
   }
 }
