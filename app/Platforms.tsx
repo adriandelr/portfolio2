@@ -9,7 +9,8 @@ export default function Platforms() {
       "https://apps.apple.com/ph/app/expo-client/id982107779",
     expoPlayStoreURL =
       "https://play.google.com/store/apps/details?id=host.exp.exponent",
-    expoURL = "exp://exp.host/@adriandelr/Portfolio";
+    expoURL =
+      "exp://u.expo.dev/b6005ca1-f261-4b9d-8b27-918a03477a19/group/270669a8-118a-459e-9341-c303e06be6b4";
 
   return (
     <View style={styles.container}>
@@ -40,7 +41,7 @@ export default function Platforms() {
             }}
           >
             {
-              "You are running on web view. For an awesome in-app experience, \n \n download the Expo app from the platforms below:"
+              "You are running on web view. For an awesome in-app experience, \n \n download the Expo app by tapping one of the platforms below:"
             }
           </Text>
 
@@ -100,7 +101,7 @@ export default function Platforms() {
             }}
           >
             <QRCode
-              value="exp://exp.host/@adriandelr/Portfolio"
+              value={expoURL}
               size={137}
               bgColor={"whitesmoke"}
               fgColor={"dimgrey"}

@@ -13,16 +13,29 @@
       "backgroundColor": "#F5F5F5"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.adriandelr.portfolio2"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#F5F5F5"
-      }
+      },
+      "package": "com.adriandelr.portfolio2"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b6005ca1-f261-4b9d-8b27-918a03477a19"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/b6005ca1-f261-4b9d-8b27-918a03477a19"
     }
   }
 }
