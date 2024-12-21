@@ -71,7 +71,7 @@ export default function Platforms() {
               marginBottom: 20,
             }}
           >
-            {"After Expo is installed, you may open this app through the link,"}
+            {"When Expo is installed, you may open this app through the link,"}
           </Text>
           <Linker
             url={expoURL}
