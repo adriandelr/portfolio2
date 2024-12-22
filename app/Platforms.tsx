@@ -79,8 +79,8 @@ export default function Platforms() {
             color={"whitesmoke"}
             bgColor={"dimgrey"}
             borderColor={"lightgrey"}
-            confirmText="Are you sure you have installed the Expo client?"
-            cancelText="Please download the Expo client."
+            confirmText="Are you sure you have installed the Expo app?"
+            cancelText="Please download the Expo app."
           />
 
           <Text
