@@ -18,6 +18,7 @@ import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
 import Present from "./app/Present";
 import Projects from "./app/Projects";
 import Platforms from "./app/Platforms";
+import { Preserve } from "./app/Preserve";
 
 SplashScreen.hide();
 
@@ -78,6 +79,7 @@ const Portfolio: FunctionComponent = () => {
             />
 
             {/* Parallax Content */}
+            {/* Portfolio Profile */}
             <Present />
 
             {/* Projects Showcase */}
@@ -85,6 +87,9 @@ const Portfolio: FunctionComponent = () => {
 
             {/* Platform Specific */}
             <Platforms />
+
+            {/* Preserve Relation */}
+            <Preserve />
           </Animated.ScrollView>
           <StatusBar style="light" backgroundColor="black" />
         </SafeAreaView>
