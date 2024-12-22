@@ -4,7 +4,7 @@ import { Alert, View, Linking, TouchableOpacity } from "react-native";
 import { Button } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-import { isPlatformWeb } from "../utils/Platform";
+import Platform from "../utils/Platform";
 
 export default function Linker({
   url,
@@ -21,7 +21,7 @@ export default function Linker({
     const supported = await Linking.canOpenURL(url);
 
     if (supported) {
-      if (isPlatformWeb()) {
+      if (Platform.isWeb) {
         window.open(url, "_blank");
       } else {
         await Linking.openURL(url);
@@ -83,7 +83,7 @@ export default function Linker({
             titleStyle={{
               fontSize: textSize || 13,
               color: color || "#101111",
-              fontWeight: isPlatformWeb() ? "normal" : "300",
+              fontWeight: Platform.isWeb ? "normal" : "300",
             }}
             buttonStyle={{
               alignItems: "center",

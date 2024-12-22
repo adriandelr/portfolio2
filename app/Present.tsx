@@ -4,9 +4,10 @@ import React from "react";
 import { Avatar } from "@rneui/themed";
 import Animated, { FadeIn } from "react-native-reanimated";
 
-import { isPlatformWeb } from "./utils/Platform";
+import { isSmallScreen } from "./hooks/useLayout";
 
 export default function Present() {
+  const styles = setStyles(isSmallScreen());
   return (
     <View style={styles.container}>
       <Animated.View entering={FadeIn}>
@@ -43,35 +44,36 @@ export default function Present() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    height: "auto",
-    backgroundColor: "white",
-  },
-  containerStyle: {
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-    alignSelf: "center",
-    marginTop: 30,
-  },
-  avatarStyle: {
-    width: null,
-    height: null,
-    flex: 1,
-    resizeMode: "contain",
-  },
-  viewProfileText: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 30,
-  },
-  textProfile: {
-    maxWidth: isPlatformWeb() ? "35.7%" : "83%",
-    fontFamily: "proxima-regular",
-    color: "grey",
-    fontSize: 15,
-    textAlign: "center",
-  },
-});
+const setStyles = (isSmallScreen: boolean) =>
+  StyleSheet.create({
+    container: {
+      height: "auto",
+      backgroundColor: "white",
+    },
+    containerStyle: {
+      position: "relative",
+      display: "flex",
+      justifyContent: "center",
+      alignSelf: "center",
+      marginTop: isSmallScreen ? 40 : 30,
+    },
+    avatarStyle: {
+      width: null,
+      height: null,
+      flex: 1,
+      resizeMode: "contain",
+    },
+    viewProfileText: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingVertical: isSmallScreen ? 40 : 30,
+    },
+    textProfile: {
+      maxWidth: isSmallScreen ? "83%" : "35.7%",
+      fontFamily: "proxima-regular",
+      color: "grey",
+      fontSize: 15,
+      textAlign: "center",
+    },
+  });

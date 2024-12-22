@@ -5,7 +5,8 @@ import { useSharedValue } from "react-native-reanimated";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 
 import { PROJECTS } from "./constants/Projects";
-import { isPlatformWeb } from "./utils/Platform";
+import { isSmallScreen, isSmallerScreen } from "./hooks/useLayout";
+import Platform from "../app/utils/Platform";
 
 const getMaxWidth = () => {
   let width = Dimensions.get("window").width;
@@ -14,6 +15,8 @@ const getMaxWidth = () => {
 };
 
 export default function Projects() {
+  const styles = setStyles(isSmallScreen(), isSmallerScreen());
+
   const ref = React.useRef<ICarouselInstance>(null);
   const progress = useSharedValue<number>(0);
 
@@ -31,9 +34,9 @@ export default function Projects() {
             onProgressChange={progress}
             mode="parallax"
             modeConfig={{
-              parallaxScrollingScale: isPlatformWeb() ? 0.7 : 0.8,
-              parallaxScrollingOffset: isPlatformWeb() ? 100 : 57,
-              parallaxAdjacentItemScale: isPlatformWeb() ? 0.8 : 0.8,
+              parallaxScrollingScale: Platform.isWeb ? 0.7 : 0.8,
+              parallaxScrollingOffset: Platform.isWeb ? 100 : 57,
+              parallaxAdjacentItemScale: Platform.isWeb ? 0.8 : 0.8,
             }}
             renderItem={({ index }) => (
               <View style={styles.carousel}>
@@ -51,44 +54,45 @@ export default function Projects() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    height: "auto",
-    backgroundColor: "whitesmoke",
-    alignItems: "center",
-    paddingBottom: isPlatformWeb() ? 35 : 45,
-  },
-  textShowcase: {
-    color: "dimgrey",
-    fontSize: isPlatformWeb() ? 27 : 21,
-    textAlign: "center",
-    fontFamily: 'proxima-extrabold"',
-    marginTop: isPlatformWeb() ? 50 : 20,
-    marginVertical: isPlatformWeb() ? 0 : 20,
-  },
-  viewCarousel: {
-    position: "relative",
-    marginBottom: isPlatformWeb() ? 0 : 90,
-  },
-  carousel: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: isPlatformWeb() ? "transparent" : "lightgrey",
-    borderWidth: isPlatformWeb() ? 1 : 0,
-    borderColor: "lightgrey",
-    borderRadius: 3,
-    width: "100%",
-    shadowColor: "dimgrey",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 1,
-    elevation: 4,
-  },
-  carouselImage: {
-    alignSelf: "center",
-    flex: 1,
-    transform: [{ scale: isPlatformWeb() ? 1 : 1.57 }],
-    width: isPlatformWeb() ? "100%" : "57%",
-    backgroundColor: isPlatformWeb() ? "transparent" : "#101111",
-  },
-});
+const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
+  StyleSheet.create({
+    container: {
+      height: "auto",
+      backgroundColor: "whitesmoke",
+      alignItems: "center",
+      paddingBottom: Platform.isWeb ? 35 : 0,
+    },
+    textShowcase: {
+      color: "dimgrey",
+      fontSize: Platform.isWeb && !isSmallerScreen ? 27 : 23,
+      textAlign: "center",
+      fontFamily: 'proxima-extrabold"',
+      marginTop: Platform.isWeb ? 30 : 20,
+      marginVertical: Platform.isWeb ? 10 : 20,
+    },
+    viewCarousel: {
+      position: "relative",
+      marginBottom: Platform.isWeb ? (isSmallScreen ? 45 : 0) : 90,
+    },
+    carousel: {
+      flex: 1,
+      justifyContent: "center",
+      backgroundColor: Platform.isWeb ? "transparent" : "lightgrey",
+      borderWidth: Platform.isWeb ? 1 : 0,
+      borderColor: "lightgrey",
+      borderRadius: 3,
+      width: "100%",
+      shadowColor: "dimgrey",
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.1,
+      shadowRadius: 1,
+      elevation: 4,
+    },
+    carouselImage: {
+      alignSelf: "center",
+      flex: 1,
+      transform: [{ scale: Platform.isWeb ? 1 : 1.57 }],
+      width: Platform.isWeb ? "100%" : "57%",
+      backgroundColor: Platform.isWeb ? "transparent" : "#101111",
+    },
+  });
