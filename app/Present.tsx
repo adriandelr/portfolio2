@@ -2,28 +2,31 @@ import { Platform, View } from "react-native";
 import React from "react";
 
 import { Avatar, Text } from "@rneui/themed";
+import Animated, { FadeIn } from "react-native-reanimated";
 
 export default function Present() {
   return (
     <View style={{ height: "auto", backgroundColor: "white" }}>
-      <Avatar
-        size={230}
-        rounded
-        source={require("../assets/images/imresizer-ADR-300x300_enhanced.png")}
-        containerStyle={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignSelf: "center",
-          marginTop: 30,
-        }}
-        avatarStyle={{
-          width: null,
-          height: null,
-          flex: 1,
-          resizeMode: "contain",
-        }}
-      />
+      <Animated.View entering={FadeIn}>
+        <Avatar
+          size={230}
+          rounded
+          source={require("../assets/images/imresizer-ADR-300x300_enhanced.png")}
+          containerStyle={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignSelf: "center",
+            marginTop: 30,
+          }}
+          avatarStyle={{
+            width: null,
+            height: null,
+            flex: 1,
+            resizeMode: "contain",
+          }}
+        />
+      </Animated.View>
 
       <View
         style={{
