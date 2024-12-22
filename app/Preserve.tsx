@@ -1,9 +1,9 @@
-import { Platform, View, Text } from "react-native";
+import { StyleSheet, Platform, View, Text } from "react-native";
 import React, { useEffect, useRef } from "react";
 
 import LottieView from "lottie-react-native";
-import Linker from "./components/Linker";
 
+import Linker from "./components/Linker";
 import { isInView } from "./hooks/useIsInView";
 
 export function Preserve() {
@@ -20,43 +20,17 @@ export function Preserve() {
   }, [isVisible]);
 
   return (
-    <View
-      style={{ height: "auto", backgroundColor: "white", paddingBottom: 70 }}
-    >
-      <Text
-        style={{
-          color: "dimgrey",
-          fontSize: Platform.OS === "web" ? 27 : 21,
-          textAlign: "center",
-          fontFamily: 'proxima-extrabold"',
-          marginTop: Platform.OS === "web" ? 0 : 20,
-          marginVertical: Platform.OS === "web" ? 0 : 20,
-        }}
-      >
-        AND THAT IS IT
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.textAndThat}>AND THAT IS IT</Text>
 
       <LottieView
         ref={linkRef}
         source={require("../assets/animated/link.json")}
-        webStyle={{
-          width: 333,
-          height: 333,
-          flex: 1,
-          alignSelf: "center",
-        }}
+        webStyle={styles.lottieWebStyle}
         loop={false}
       />
 
-      <View
-        ref={triggerRef}
-        style={{
-          width: "100%",
-          flexDirection: "row",
-          gap: 37,
-          justifyContent: "center",
-        }}
-      >
+      <View ref={triggerRef} style={styles.viewIcons}>
         <Linker
           url={"mailto:adrian.delr@gmail.com"}
           iconOnly="envelope"
@@ -74,27 +48,49 @@ export function Preserve() {
         />
       </View>
 
-      <Text
-        style={{
-          color: "dimgrey",
-          fontSize: Platform.OS === "web" ? 27 : 21,
-          textAlign: "center",
-          fontFamily: 'proxima-extrabold"',
-        }}
-      >
+      <Text style={styles.textConnect}>
         Let’s connect and create something awesome
       </Text>
 
-      <Text
-        style={{
-          fontFamily: "proxima-alt-light",
-          color: "grey",
-          fontSize: 15,
-          textAlign: "center",
-        }}
-      >
+      <Text style={styles.textMadeWith}>
         Made with 🍵, 🤍, and a touch of alchemy © [2025]
       </Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { height: "auto", backgroundColor: "white", paddingBottom: 70 },
+  textAndThat: {
+    color: "dimgrey",
+    fontSize: Platform.OS === "web" ? 27 : 21,
+    textAlign: "center",
+    fontFamily: 'proxima-extrabold"',
+    marginTop: Platform.OS === "web" ? 0 : 20,
+    marginVertical: Platform.OS === "web" ? 0 : 20,
+  },
+  lottieWebStyle: {
+    width: 333,
+    height: 333,
+    flex: 1,
+    alignSelf: "center",
+  },
+  viewIcons: {
+    width: "100%",
+    flexDirection: "row",
+    gap: 37,
+    justifyContent: "center",
+  },
+  textConnect: {
+    color: "dimgrey",
+    fontSize: Platform.OS === "web" ? 27 : 21,
+    textAlign: "center",
+    fontFamily: 'proxima-extrabold"',
+  },
+  textMadeWith: {
+    fontFamily: "proxima-alt-light",
+    color: "grey",
+    fontSize: 15,
+    textAlign: "center",
+  },
+});

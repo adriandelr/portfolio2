@@ -1,8 +1,8 @@
+import { Platform, Dimensions, StyleSheet } from "react-native";
+import React, { FunctionComponent, useState } from "react";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Platform, Dimensions, StyleSheet, Text, View } from "react-native";
-import React, { FunctionComponent, useState } from "react";
 
 import Animated, {
   interpolate,
@@ -64,7 +64,7 @@ const Portfolio: FunctionComponent = () => {
   return !animationCompleted && !isLoadingComplete ? (
     <AnimatedSplashScreen onFinish={changeAnimationStatus} />
   ) : (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={styles.gestureView}>
       <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
           <Animated.ScrollView
@@ -100,6 +100,7 @@ const Portfolio: FunctionComponent = () => {
 export default Portfolio;
 
 const styles = StyleSheet.create({
+  gestureView: { flex: 1 },
   container: {
     flex: 1,
     backgroundColor: "whitesmoke",
