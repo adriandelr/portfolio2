@@ -1,5 +1,3 @@
-import { Platform } from "react-native";
-
 export const PROJECTS: any = [
   {
     date: "Mar 2021 - April 2024",
@@ -78,10 +76,10 @@ design, and feature specifications.
       require("../../assets/images/projects/proj-hmc-6.png"),
       require("../../assets/images/projects/proj-hmc-7.png"),
     ],
-    storeLink:
-      Platform.OS === "ios"
-        ? "https://apps.apple.com/ph/developer/hospitality-marketing-concepts-llc/id837144091"
-        : "https://play.google.com/store/apps/developer?id=Hospitality+Marketing+Concepts",
+    storeLinkIOS:
+      "https://apps.apple.com/ph/developer/hospitality-marketing-concepts-llc/id837144091",
+    storeLinkAndroid:
+      "https://play.google.com/store/apps/developer?id=Hospitality+Marketing+Concepts",
   },
   {
     date: "Dec 2014 - April 2017",

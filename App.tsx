@@ -18,7 +18,8 @@ import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
 import Present from "./app/Present";
 import Projects from "./app/Projects";
 import Platforms from "./app/Platforms";
-import { Preserve } from "./app/Preserve";
+import Preserve from "./app/Preserve";
+import { isPlatformWeb } from "./app/utils/Platform";
 
 SplashScreen.hide();
 
@@ -43,11 +44,7 @@ const Portfolio: FunctionComponent = () => {
           translateY: interpolate(
             scrollOffset.value,
             [-IMG_HEIGHT, 0, IMG_HEIGHT],
-            [
-              -IMG_HEIGHT / 2,
-              0,
-              IMG_HEIGHT * (Platform.OS === "web" ? 0.97 : 0.51),
-            ]
+            [-IMG_HEIGHT / 2, 0, IMG_HEIGHT * (isPlatformWeb() ? 0.97 : 0.51)]
           ),
         },
         {

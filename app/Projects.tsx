@@ -12,6 +12,7 @@ import { useSharedValue } from "react-native-reanimated";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 
 import { PROJECTS } from "./constants/Projects";
+import { isPlatformWeb } from "./utils/Platform";
 
 const getMaxWidth = () => {
   let width = Dimensions.get("window").width;
@@ -37,9 +38,9 @@ export default function Projects() {
             onProgressChange={progress}
             mode="parallax"
             modeConfig={{
-              parallaxScrollingScale: Platform.OS === "web" ? 0.7 : 0.8,
-              parallaxScrollingOffset: Platform.OS === "web" ? 100 : 57,
-              parallaxAdjacentItemScale: Platform.OS === "web" ? 0.8 : 0.8,
+              parallaxScrollingScale: isPlatformWeb() ? 0.7 : 0.8,
+              parallaxScrollingOffset: isPlatformWeb() ? 100 : 57,
+              parallaxAdjacentItemScale: isPlatformWeb() ? 0.8 : 0.8,
             }}
             renderItem={({ index }) => (
               <View style={styles.carousel}>
@@ -62,25 +63,25 @@ const styles = StyleSheet.create({
     height: "auto",
     backgroundColor: "whitesmoke",
     alignItems: "center",
-    paddingBottom: Platform.OS === "web" ? 35 : 45,
+    paddingBottom: isPlatformWeb() ? 35 : 45,
   },
   textShowcase: {
     color: "dimgrey",
-    fontSize: Platform.OS === "web" ? 27 : 21,
+    fontSize: isPlatformWeb() ? 27 : 21,
     textAlign: "center",
     fontFamily: 'proxima-extrabold"',
-    marginTop: Platform.OS === "web" ? 50 : 20,
-    marginVertical: Platform.OS === "web" ? 0 : 20,
+    marginTop: isPlatformWeb() ? 50 : 20,
+    marginVertical: isPlatformWeb() ? 0 : 20,
   },
   viewCarousel: {
     position: "relative",
-    marginBottom: Platform.OS === "web" ? 0 : 90,
+    marginBottom: isPlatformWeb() ? 0 : 90,
   },
   carousel: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: Platform.OS === "web" ? "transparent" : "lightgrey",
-    borderWidth: Platform.OS === "web" ? 1 : 0,
+    backgroundColor: isPlatformWeb() ? "transparent" : "lightgrey",
+    borderWidth: isPlatformWeb() ? 1 : 0,
     borderColor: "lightgrey",
     borderRadius: 3,
     width: "100%",
@@ -93,8 +94,8 @@ const styles = StyleSheet.create({
   carouselImage: {
     alignSelf: "center",
     flex: 1,
-    transform: [{ scale: Platform.OS === "web" ? 1 : 1.57 }],
-    width: Platform.OS === "web" ? "100%" : "57%",
-    backgroundColor: Platform.OS === "web" ? "transparent" : "#101111",
+    transform: [{ scale: isPlatformWeb() ? 1 : 1.57 }],
+    width: isPlatformWeb() ? "100%" : "57%",
+    backgroundColor: isPlatformWeb() ? "transparent" : "#101111",
   },
 });

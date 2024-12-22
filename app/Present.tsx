@@ -4,6 +4,8 @@ import React from "react";
 import { Avatar } from "@rneui/themed";
 import Animated, { FadeIn } from "react-native-reanimated";
 
+import { isPlatformWeb } from "./utils/Platform";
+
 export default function Present() {
   return (
     <View style={styles.container}>
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
   },
   textProfile: {
-    maxWidth: Platform.OS === "web" ? "35.7%" : "83%",
+    maxWidth: isPlatformWeb() ? "35.7%" : "83%",
     fontFamily: "proxima-regular",
     color: "grey",
     fontSize: 15,

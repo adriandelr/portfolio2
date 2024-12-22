@@ -3,14 +3,15 @@ import React from "react";
 
 import QRCode from "react-qr-code";
 
-import Layout from "./constants/Layout";
+import Layout from "./utils/Layout";
 import Linker from "./components/Linker";
+import { isPlatformWeb } from "./utils/Platform";
 import { expoAppStoreURL, expoPlayStoreURL, expoURL } from "./constants/Expo";
 
 export default function Platforms() {
   return (
     <View style={styles.container}>
-      {Platform.OS === "web" && (
+      {isPlatformWeb() && (
         <View style={styles.innerContainer}>
           <Text style={styles.textNative}>A MORE NATIVE EXPERIENCE</Text>
 
@@ -66,17 +67,17 @@ const styles = StyleSheet.create({
   innerContainer: { width: "100%", alignItems: "center" },
   textNative: {
     color: "dimgrey",
-    fontSize: Platform.OS === "web" ? 27 : 21,
+    fontSize: isPlatformWeb() ? 27 : 21,
     textAlign: "center",
     fontFamily: 'proxima-extrabold"',
-    marginTop: Platform.OS === "web" ? 50 : 20,
-    marginVertical: Platform.OS === "web" ? 0 : 20,
+    marginTop: isPlatformWeb() ? 50 : 20,
+    marginVertical: isPlatformWeb() ? 0 : 20,
   },
   textWebview: {
     fontFamily: "proxima-regular",
     maxWidth: Layout.isSmallDevice ? "100%" : "35.7%",
     color: "dimgrey",
-    fontSize: Platform.OS === "web" ? 14 : 15,
+    fontSize: isPlatformWeb() ? 14 : 15,
     textAlign: "center",
     marginTop: 40,
     marginBottom: 20,
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     fontFamily: "proxima-regular",
     maxWidth: Layout.isSmallDevice ? "100%" : 530,
     color: "dimgrey",
-    fontSize: Platform.OS === "web" ? 14 : 15,
+    fontSize: isPlatformWeb() ? 14 : 15,
     marginTop: 30,
     marginBottom: 20,
   },
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     fontFamily: "proxima-regular",
     maxWidth: Layout.isSmallDevice ? "100%" : 530,
     color: "dimgrey",
-    fontSize: Platform.OS === "web" ? 14 : 15,
+    fontSize: isPlatformWeb() ? 14 : 15,
     marginTop: 15,
     marginBottom: 10,
   },

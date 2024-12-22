@@ -4,9 +4,10 @@ import React, { useEffect, useRef } from "react";
 import LottieView from "lottie-react-native";
 
 import Linker from "./components/Linker";
+import { isPlatformWeb } from "./utils/Platform";
 import { isInView } from "./hooks/useIsInView";
 
-export function Preserve() {
+export default function Preserve() {
   const triggerRef = React.useRef(null);
   const linkRef = useRef<LottieView | null>(null);
   const isVisible = isInView(triggerRef, "0px", true);
@@ -63,11 +64,11 @@ const styles = StyleSheet.create({
   container: { height: "auto", backgroundColor: "white", paddingBottom: 70 },
   textAndThat: {
     color: "dimgrey",
-    fontSize: Platform.OS === "web" ? 27 : 21,
+    fontSize: isPlatformWeb() ? 27 : 21,
     textAlign: "center",
     fontFamily: 'proxima-extrabold"',
-    marginTop: Platform.OS === "web" ? 0 : 20,
-    marginVertical: Platform.OS === "web" ? 0 : 20,
+    marginTop: isPlatformWeb() ? 0 : 20,
+    marginVertical: isPlatformWeb() ? 0 : 20,
   },
   lottieWebStyle: {
     width: 333,
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   },
   textConnect: {
     color: "dimgrey",
-    fontSize: Platform.OS === "web" ? 27 : 21,
+    fontSize: isPlatformWeb() ? 27 : 21,
     textAlign: "center",
     fontFamily: 'proxima-extrabold"',
   },
