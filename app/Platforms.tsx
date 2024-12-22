@@ -26,7 +26,7 @@ export default function Platforms() {
               marginVertical: Platform.OS === "web" ? 0 : 20,
             }}
           >
-            A MORE NATIVE EXPERIENCE...
+            A MORE NATIVE EXPERIENCE
           </Text>
 
           <Text

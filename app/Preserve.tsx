@@ -33,7 +33,7 @@ export function Preserve() {
           marginVertical: Platform.OS === "web" ? 0 : 20,
         }}
       >
-        AND THAT IS IT!
+        AND THAT IS IT
       </Text>
 
       <LottieView
@@ -82,7 +82,7 @@ export function Preserve() {
           fontFamily: 'proxima-extrabold"',
         }}
       >
-        Let’s connect and create something awesome.
+        Let’s connect and create something awesome
       </Text>
 
       <Text
@@ -93,7 +93,7 @@ export function Preserve() {
           textAlign: "center",
         }}
       >
-        Made with 🍵, 🤍, and a touch of alchemy © [Adrian Del Rosario] [2025]
+        Made with 🍵, 🤍, and a touch of alchemy © [2025]
       </Text>
     </View>
   );
