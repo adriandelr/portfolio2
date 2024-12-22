@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Platform,
-  Dimensions,
-  View,
-  Text,
-  Image,
-} from "react-native";
+import { StyleSheet, Dimensions, View, Text, Image } from "react-native";
 import * as React from "react";
 
 import { useSharedValue } from "react-native-reanimated";

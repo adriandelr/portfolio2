@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Alert, Platform, View, Linking, TouchableOpacity } from "react-native";
+import { Alert, View, Linking, TouchableOpacity } from "react-native";
 
 import { Button } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome5";

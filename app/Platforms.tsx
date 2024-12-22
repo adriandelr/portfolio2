@@ -1,4 +1,4 @@
-import { StyleSheet, Platform, View, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import React from "react";
 
 import QRCode from "react-qr-code";

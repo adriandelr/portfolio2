@@ -1,4 +1,4 @@
-import { Platform, Dimensions, StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import React, { FunctionComponent, useState } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
