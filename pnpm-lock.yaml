@@ -72,6 +72,9 @@ importers:
       '@babel/core':
         specifier: ^7.25.2
         version: 7.26.0
+      '@types/gh-pages':
+        specifier: ^6.1.0
+        version: 6.1.0
       '@types/react':
         specifier: ~18.3.12
         version: 18.3.18
@@ -1078,6 +1081,9 @@ packages:
 
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
+
+  '@types/gh-pages@6.1.0':
+    resolution: {integrity: sha512-Ma9bmKkE+WUtywENLC1rSLXTW66cJHJMWX2RQrJTMKhYM8o+73bRJ1ebfo3RWXUcG+HW3khky2nhVaN7nCsa3Q==}
 
   '@types/graceful-fs@4.1.9':
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
@@ -5173,6 +5179,8 @@ snapshots:
   '@types/babel__traverse@7.20.6':
     dependencies:
       '@babel/types': 7.26.3
+
+  '@types/gh-pages@6.1.0': {}
 
   '@types/graceful-fs@4.1.9':
     dependencies:
