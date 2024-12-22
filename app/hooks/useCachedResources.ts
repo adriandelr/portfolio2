@@ -1,6 +1,5 @@
-import { Ionicons } from "@expo/vector-icons";
-import * as Font from "expo-font";
 import * as React from "react";
+import * as Font from "expo-font";
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -11,7 +10,6 @@ export default function useCachedResources() {
       try {
         // Load fonts
         await Font.loadAsync({
-          ...Ionicons.font,
           "proxima-thin": require("../../assets/fonts/proxima/ProximaNova-Thin.otf"),
           "proxima-regular": require("../../assets/fonts/proxima/ProximaNova-Regular.otf"),
           "proxima-bold": require("../../assets/fonts/proxima/ProximaNova-Bold.otf"),
@@ -22,7 +20,6 @@ export default function useCachedResources() {
           "proxima-alt-light": require("../../assets/fonts/proxima/ProximaNova-AltLight.otf"),
         });
       } catch (e) {
-        // We might want to provide this error information to an error reporting service
         console.warn(e);
       } finally {
         setTimeout(() => setLoadingComplete(true), 3700);

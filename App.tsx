@@ -15,7 +15,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import useCachedResources from "./app/hooks/useCachedResources";
 
 import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
-import Profile from "./app/Profile";
+import Present from "./app/Present";
 import Projects from "./app/Projects";
 import Platforms from "./app/Platforms";
 
@@ -78,7 +78,7 @@ const Portfolio: FunctionComponent = () => {
             />
 
             {/* Parallax Content */}
-            <Profile />
+            <Present />
 
             {/* Projects Showcase */}
             <Projects />

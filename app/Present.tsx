@@ -3,7 +3,7 @@ import React from "react";
 
 import { Avatar, Text } from "@rneui/themed";
 
-export default function DevProfile() {
+export default function Present() {
   return (
     <View style={{ height: "auto", backgroundColor: "white" }}>
       <Avatar
