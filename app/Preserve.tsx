@@ -7,7 +7,6 @@ import Linker from "./components/Linker";
 import { isSmallScreen, isSmallerScreen } from "./hooks/useLayout";
 import Platform from "../app/utils/Platform";
 import { isInView } from "./hooks/useIsInView";
-import { InView } from "react-native-intersection-observer";
 
 export default function Preserve() {
   const styles = setStyles(isSmallScreen(), isSmallerScreen());
@@ -25,26 +24,6 @@ export default function Preserve() {
     }, 300);
   };
 
-  const iconsTemplate = () => (
-    <View ref={triggerRef} style={styles.viewIcons}>
-      <Linker
-        url={"mailto:adrian.delr@gmail.com"}
-        iconOnly="envelope"
-        color={"dimgrey"}
-      />
-      <Linker
-        url={"skype:adrian.delr?chat"}
-        iconOnly="skype"
-        color={"dimgrey"}
-      />
-      <Linker
-        url={"viber://contact?number=%2B639760166007"}
-        iconOnly="viber"
-        color={"dimgrey"}
-      />
-    </View>
-  );
-
   return (
     <View style={styles.container}>
       <Text style={styles.textAndThat}>AND THAT IS IT</Text>
@@ -57,17 +36,24 @@ export default function Preserve() {
         loop={false}
       />
 
-      {Platform.isWeb && iconsTemplate.call(iconsTemplate)}
-      {(Platform.isAndroid || Platform.isIOS) && (
-        <InView
-          ref={triggerRef}
-          style={styles.viewIcons}
-          triggerOnce={true}
-          onChange={() => playLink()}
-        >
-          {iconsTemplate.call(iconsTemplate)}
-        </InView>
-      )}
+      <View ref={triggerRef} style={styles.viewIcons}>
+        <Linker
+          url={"mailto:adrian.delr@gmail.com"}
+          iconOnly="envelope"
+          color={"dimgrey"}
+        />
+        <Linker
+          url={"skype:adrian.delr?chat"}
+          iconOnly="skype"
+          color={"dimgrey"}
+        />
+        <Linker
+          url={"viber://contact?number=%2B639760166007"}
+          iconOnly="viber"
+          color={"dimgrey"}
+        />
+      </View>
+
       <Text style={styles.textConnect}>
         Let’s connect and create something awesome
       </Text>

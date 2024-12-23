@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { FunctionComponent, useState, useRef } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -12,10 +12,6 @@ import Animated, {
   useAnimatedScrollHandler,
 } from "react-native-reanimated";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import {
-  IOScrollView,
-  IOScrollViewController,
-} from "react-native-intersection-observer";
 
 import {
   screenWidth,
@@ -42,8 +38,6 @@ const Portfolio: FunctionComponent = () => {
   const scrollHandler = useAnimatedScrollHandler((event) => {
     scrollOffset.value = event.contentOffset.y;
   });
-
-  const scrollViewRef = useRef<IOScrollViewController>(null);
 
   const IMG_HEIGHT = isSmallScreen() && !isSmallerScreen() ? 200 : 300;
   const styles = setStyles(screenWidth(), IMG_HEIGHT);
@@ -101,11 +95,7 @@ const Portfolio: FunctionComponent = () => {
       <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
           {Platform.isWeb && contentTemplate.call(this)}
-          {(Platform.isAndroid || Platform.isIOS) && (
-            <IOScrollView ref={scrollViewRef}>
-              {contentTemplate.call(this)}
-            </IOScrollView>
-          )}
+          {(Platform.isAndroid || Platform.isIOS) && contentTemplate.call(this)}
           <StatusBar style="light" backgroundColor="black" />
         </SafeAreaView>
       </SafeAreaProvider>
