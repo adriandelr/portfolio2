@@ -17,6 +17,11 @@ import {
   IOScrollViewController,
 } from "react-native-intersection-observer";
 
+import {
+  screenWidth,
+  isSmallScreen,
+  isSmallerScreen,
+} from "./app/hooks/useLayout";
 import useCachedResources from "./app/hooks/useCachedResources";
 import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
 import Present from "./app/Present";
@@ -26,9 +31,6 @@ import Preserve from "./app/Preserve";
 import Platform from "./app/utils/Platform";
 
 SplashScreen.hide();
-
-const { width } = Dimensions.get("window");
-const IMG_HEIGHT = 300;
 
 const Portfolio: FunctionComponent = () => {
   const [animationCompleted, setAnimationComplete] = useState<Boolean>(false);
@@ -43,6 +45,8 @@ const Portfolio: FunctionComponent = () => {
 
   const scrollViewRef = useRef<IOScrollViewController>(null);
 
+  const IMG_HEIGHT = isSmallScreen() && !isSmallerScreen() ? 200 : 300;
+  const styles = setStyles(screenWidth(), IMG_HEIGHT);
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {
       transform: [
@@ -110,14 +114,15 @@ const Portfolio: FunctionComponent = () => {
 };
 export default Portfolio;
 
-const styles = StyleSheet.create({
-  gestureView: { flex: 1 },
-  container: {
-    flex: 1,
-    backgroundColor: "whitesmoke",
-  },
-  image: {
-    width: width,
-    height: IMG_HEIGHT,
-  },
-});
+const setStyles = (width: number, IMG_HEIGHT: number) =>
+  StyleSheet.create({
+    gestureView: { flex: 1 },
+    container: {
+      flex: 1,
+      backgroundColor: "whitesmoke",
+    },
+    image: {
+      width: width,
+      height: IMG_HEIGHT,
+    },
+  });

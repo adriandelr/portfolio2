@@ -3,6 +3,19 @@ import { useState, useEffect } from "react";
 
 const windowWidth = Dimensions.get("window").width;
 
+export const screenWidth = (): number => {
+  const [width, setWidth] = useState(windowWidth);
+
+  useEffect(() => {
+    const subscription = Dimensions.addEventListener("change", ({ window }) => {
+      setWidth(window.width);
+    });
+    return () => subscription?.remove();
+  });
+
+  return width;
+};
+
 export const isSmallScreen = (): boolean => {
   const breakpoint = 1024;
   return handleWindowChange(breakpoint);
