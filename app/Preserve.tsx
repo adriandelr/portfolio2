@@ -23,6 +23,7 @@ export default function Preserve() {
       linkRef.current?.play();
     }, 300);
   };
+  if (!Platform.isWeb) playLink();
 
   return (
     <View style={styles.container}>
