@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { FunctionComponent, useState, useRef } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -19,8 +19,8 @@ import {
 
 import {
   screenWidth,
+  isStandardScreen,
   isSmallScreen,
-  isSmallerScreen,
 } from "./app/hooks/useLayout";
 import useCachedResources from "./app/hooks/useCachedResources";
 import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
@@ -45,7 +45,7 @@ const Portfolio: FunctionComponent = () => {
 
   const scrollViewRef = useRef<IOScrollViewController>(null);
 
-  const IMG_HEIGHT = isSmallScreen() && !isSmallerScreen() ? 200 : 300;
+  const IMG_HEIGHT = isStandardScreen() ? (isSmallScreen() ? 200 : 300) : 370;
   const styles = setStyles(screenWidth(), IMG_HEIGHT);
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {

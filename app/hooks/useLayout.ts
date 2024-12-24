@@ -16,6 +16,11 @@ export const screenWidth = (): number => {
   return width;
 };
 
+export const isStandardScreen = (): boolean => {
+  const breakpoint = 1920;
+  return handleWindowChange(breakpoint);
+};
+
 export const isSmallScreen = (): boolean => {
   const breakpoint = 1024;
   return handleWindowChange(breakpoint);
