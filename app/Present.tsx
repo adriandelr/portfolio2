@@ -70,7 +70,7 @@ const setStyles = (isSmallScreen: boolean) =>
       paddingVertical: isSmallScreen ? 40 : 30,
     },
     textProfile: {
-      maxWidth: isSmallScreen ? "69%" : "31%",
+      maxWidth: isSmallScreen ? "79%" : "31%",
       fontFamily: "proxima-regular",
       color: "grey",
       fontSize: 15,
