@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from "react";
 import { StyleSheet } from "react-native";
+
 import LottieView from "lottie-react-native";
+import { isSmallScreen } from "./hooks/useLayout";
 
 interface Props {
   onFinish: (param: Boolean) => void;
@@ -12,6 +14,7 @@ const AnimatedSplashScreen: FunctionComponent<Props> = ({ onFinish }) => {
       source={require("../assets/animated/wfh.json")}
       style={[styles.centered, styles.centeredDevice]}
       webStyle={styles.centered}
+      speed={isSmallScreen() ? 0.25 : 0.5}
       autoPlay
       loop={true}
       onAnimationFinish={() => onFinish(true)}
