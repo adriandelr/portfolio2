@@ -24,20 +24,20 @@ export default function Present() {
         <Text style={styles.textProfile}>
           Adrian is a web developer focused on developing Cross-Platform
           applications using Front-End technologies. He has been delivering
-          various solutions, ranging from UI and animation to computation,
-          communication, and modularity of client-side data and content for the
+          various solutions, ranging from UI and animation to communication,
+          computation, and management of client-side data and content for the
           past nine (9) years.
           {"\n"}
           {"\n"}
-          Recently, he handled projects as a UI Hybrid Mobile Developer for a
-          US-based client Tollway group, and supported Accenture's Business
-          Development for a Hong Kong-based Housing provider. He facilitated a
-          two-day boot camp course on a web framework for onboarding recruits.
+          Furthermore, he handled projects as a UI Hybrid Mobile Developer for a
+          US-based Tollway group and supported Accenture's Business Development
+          for a Housing provider based in Hong Kong. He then facilitated a
+          two-day boot camp on a web framework to onboard recruits.
           {"\n"}
           {"\n"}
-          Furthermore, he has developed Hybrid mobile applications for HMC's
-          world-class loyalty solutions. Providing services to luxury five-star
-          hotels, and brands.
+          Recently, he worked on applications for HMC's premium loyalty
+          solutions that serve luxury five-star hotels and developed complex
+          entry pages for a Mexican airline booking engine.
         </Text>
       </View>
     </View>
@@ -70,7 +70,7 @@ const setStyles = (isSmallScreen: boolean) =>
       paddingVertical: isSmallScreen ? 40 : 30,
     },
     textProfile: {
-      maxWidth: isSmallScreen ? "83%" : "35.7%",
+      maxWidth: isSmallScreen ? "69%" : "31%",
       fontFamily: "proxima-regular",
       color: "grey",
       fontSize: 15,
