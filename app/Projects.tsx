@@ -67,7 +67,18 @@ export default function Projects() {
         PROFILE INTRO
       </Text>
       <View style={styles.videoContainer}>
-        <VideoView style={styles.video} player={player} allowsFullscreen />
+        {Platform.isWeb && (
+          <video
+            style={styles.video}
+            src={introVideo}
+            controls
+            disablePictureInPicture
+            controlsList="nodownload noplaybackrate"
+          />
+        )}
+        {!Platform.isWeb && (
+          <VideoView style={styles.video} player={player} allowsFullscreen />
+        )}
       </View>
     </View>
   );
