@@ -1,11 +1,12 @@
 import { StyleSheet, Dimensions, View, Text, Image } from "react-native";
 import * as React from "react";
+import { useVideoPlayer, VideoView } from "expo-video";
 
 import { useSharedValue } from "react-native-reanimated";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 
 import { PROJECTS } from "./constants/Projects";
-import { isSmallScreen, isSmallerScreen } from "./hooks/useLayout";
+import { screenWidth, isSmallScreen, isSmallerScreen } from "./hooks/useLayout";
 import Platform from "../app/utils/Platform";
 
 const getMaxWidth = () => {
@@ -14,15 +15,19 @@ const getMaxWidth = () => {
   return width;
 };
 
+const introVideo = require("../assets/video/portfolio-video-c.mp4");
+
 export default function Projects() {
   const styles = setStyles(isSmallScreen(), isSmallerScreen());
 
   const ref = React.useRef<ICarouselInstance>(null);
   const progress = useSharedValue<number>(0);
 
+  const player = useVideoPlayer(introVideo);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.textShowcase}>SHOWCASE</Text>
+      <Text style={styles.textShowcase}>DEV SHOWCASE</Text>
 
       {PROJECTS.map((project: any, i: number) => (
         <View key={i} style={styles.viewCarousel}>
@@ -50,6 +55,18 @@ export default function Projects() {
           />
         </View>
       ))}
+
+      <Text style={styles.textShowcase}>DESIGN SHOWCASE</Text>
+      <Image
+        style={styles.designImage}
+        source={require("../assets/images/projects/proj-ibm-1.png")}
+        resizeMode="contain"
+      />
+
+      <Text style={[styles.textShowcase, { marginTop: 70 }]}>
+        PROFILE INTRO
+      </Text>
+      <VideoView style={styles.video} player={player} allowsFullscreen />
     </View>
   );
 }
@@ -94,5 +111,17 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
       transform: [{ scale: Platform.isWeb ? 1 : 1.57 }],
       width: Platform.isWeb ? "100%" : "57%",
       backgroundColor: Platform.isWeb ? "transparent" : "#4C4C4C",
+    },
+    designImage: {
+      marginTop: 40,
+      width: isSmallScreen ? screenWidth() - 30 : "57%",
+      maxHeight: isSmallScreen ? screenWidth() / 2 : "auto",
+    },
+    video: {
+      flex: 1,
+      marginTop: Platform.isWeb ? 10 : 0,
+      marginBottom: 40,
+      width: isSmallScreen ? screenWidth() - 30 : "57%",
+      minHeight: Platform.isWeb ? "auto" : screenWidth() / 2,
     },
   });

@@ -39,6 +39,9 @@
     },
     "experiments": {
       "baseUrl": "/portfolio2"
-    }
+    },
+    "plugins": [
+      "expo-video"
+    ]
   }
 }
