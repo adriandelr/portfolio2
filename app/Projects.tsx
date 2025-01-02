@@ -74,6 +74,7 @@ export default function Projects() {
             controls
             disablePictureInPicture
             controlsList="nodownload noplaybackrate"
+            preload="auto"
           />
         )}
         {!Platform.isWeb && (
