@@ -108,7 +108,7 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
     carousel: {
       flex: 1,
       justifyContent: "center",
-      backgroundColor: Platform.isWeb ? "transparent" : "lightgrey",
+      backgroundColor: Platform.isWeb ? "transparent" : "gainsboro",
       borderWidth: Platform.isWeb ? 1 : 0,
       borderColor: "lightgrey",
       borderRadius: 3,
@@ -124,7 +124,7 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
       flex: 1,
       transform: [{ scale: Platform.isWeb ? 1 : 1.57 }],
       width: Platform.isWeb ? "100%" : "57%",
-      backgroundColor: Platform.isWeb ? "transparent" : "#636363",
+      backgroundColor: Platform.isWeb ? "transparent" : "whitesmoke",
     },
     designImage: {
       marginTop: Platform.isWeb ? 40 : 0,
