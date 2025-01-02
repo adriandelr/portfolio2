@@ -122,6 +122,7 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
     videoContainer: {
       flex: 1,
       marginTop: Platform.isWeb ? 20 : 0,
+      marginBottom: Platform.isWeb ? 0 : 40,
       backgroundColor: "black",
       width: isSmallScreen
         ? screenWidth() - (isSmallerScreen ? 30 : 50)
