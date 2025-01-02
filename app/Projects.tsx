@@ -115,22 +115,22 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
       backgroundColor: Platform.isWeb ? "transparent" : "#636363",
     },
     designImage: {
-      marginTop: 40,
+      marginTop: Platform.isWeb ? 40 : 0,
       width: isSmallScreen ? screenWidth() - 30 : "57%",
       maxHeight: isSmallScreen ? screenWidth() / 2 : "auto",
     },
     videoContainer: {
       flex: 1,
-      paddingTop: isSmallerScreen ? 20 : 40,
+      marginTop: Platform.isWeb ? 20 : 0,
       backgroundColor: "black",
-      width: isSmallScreen ? screenWidth() - 30 : "57%",
+      width: isSmallScreen
+        ? screenWidth() - (isSmallerScreen ? 30 : 50)
+        : "57%",
       minHeight: Platform.isWeb ? "auto" : screenWidth() / 2,
     },
     video: {
       flex: 1,
-      marginTop: Platform.isWeb ? 10 : 0,
-      marginBottom: 40,
-      width: "100%",
+      width: "100.3%",
       height: "auto",
     },
   });
