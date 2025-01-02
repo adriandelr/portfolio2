@@ -27,7 +27,7 @@ export default function Projects() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textShowcase}>DEV SHOWCASE</Text>
+      <Text style={styles.textShowcase}>SHOWCASE</Text>
 
       {PROJECTS.map((project: any, i: number) => (
         <View key={i} style={styles.viewCarousel}>
@@ -56,7 +56,7 @@ export default function Projects() {
         </View>
       ))}
 
-      <Text style={styles.textShowcase}>DESIGN SHOWCASE</Text>
+      <Text style={styles.textShowcase}>CREATIVE CONCEPT</Text>
       <Image
         style={styles.designImage}
         source={require("../assets/images/projects/proj-ibm-1.png")}
