@@ -110,7 +110,7 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
       flex: 1,
       transform: [{ scale: Platform.isWeb ? 1 : 1.57 }],
       width: Platform.isWeb ? "100%" : "57%",
-      backgroundColor: Platform.isWeb ? "transparent" : "#4C4C4C",
+      backgroundColor: Platform.isWeb ? "transparent" : "#636363",
     },
     designImage: {
       marginTop: 40,
