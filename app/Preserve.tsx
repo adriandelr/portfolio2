@@ -1,13 +1,15 @@
 import { StyleSheet, View, Text } from "react-native";
 import React, { useEffect, useRef } from "react";
+import { A } from "@expo/html-elements";
 
 import LottieView from "lottie-react-native";
+import { InView } from "react-native-intersection-observer";
 
 import Linker from "./components/Linker";
 import { isSmallScreen, isSmallerScreen } from "./hooks/useLayout";
 import Platform from "../app/utils/Platform";
 import { isInView } from "./hooks/useIsInView";
-import { InView } from "react-native-intersection-observer";
+import { expoDevURL } from "./constants/Expo";
 
 export default function Preserve() {
   const styles = setStyles(isSmallScreen(), isSmallerScreen());
@@ -73,7 +75,11 @@ export default function Preserve() {
       </Text>
 
       <Text style={styles.textMadeWith}>
-        Made with 🍵, 🤍, and a touch of alchemy © [2025]
+        Made with{" "}
+        <A href={expoDevURL} style={styles.textExpo} target="_blank">
+          Expo
+        </A>
+        , 🍵, 🤍, and a touch of alchemy © [2025]
       </Text>
     </View>
   );
@@ -116,5 +122,9 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
       color: "grey",
       fontSize: isSmallScreen ? 13 : 15,
       textAlign: "center",
+    },
+    textExpo: {
+      color: "dimgrey",
+      fontFamily: "proxima-alt-thin",
     },
   });

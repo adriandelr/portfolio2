@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@expo/html-elements':
+        specifier: ^0.11.0
+        version: 0.11.0
       '@expo/metro-runtime':
         specifier: ^4.0.0
         version: 4.0.0(react-native@0.76.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))
@@ -852,6 +855,9 @@ packages:
   '@expo/fingerprint@0.11.4':
     resolution: {integrity: sha512-FfcvHjrWjOJ17wiMfr1iQ1YDyjlj8qfxG+GDce0khrjNSkzRjVdCOIFsMvfVSBPnOPX5NuZlgMRvMkcPUtGClA==}
     hasBin: true
+
+  '@expo/html-elements@0.11.0':
+    resolution: {integrity: sha512-VYqpWme9oucgQ0fE3H2PR/YYGLIi95nBIuWJiv4tct1+9WHZq8IIz3BauND5fWp2zBtGzX7ZYUf+w4qXUb7BZw==}
 
   '@expo/image-utils@0.6.3':
     resolution: {integrity: sha512-v/JbCKBrHeudxn1gN1TgfPE/pWJSlLPrl29uXJBgrJFQVkViQvUHQNDhaS+UEa9wYI5HHh7XYmtzAehyG4L+GA==}
@@ -4854,6 +4860,8 @@ snapshots:
       semver: 7.6.3
     transitivePeerDependencies:
       - supports-color
+
+  '@expo/html-elements@0.11.0': {}
 
   '@expo/image-utils@0.6.3':
     dependencies:
