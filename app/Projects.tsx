@@ -66,7 +66,9 @@ export default function Projects() {
       <Text style={[styles.textShowcase, { marginTop: 70 }]}>
         PROFILE INTRO
       </Text>
-      <VideoView style={styles.video} player={player} allowsFullscreen />
+      <View style={styles.videoContainer}>
+        <VideoView style={styles.video} player={player} allowsFullscreen />
+      </View>
     </View>
   );
 }
@@ -117,11 +119,18 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
       width: isSmallScreen ? screenWidth() - 30 : "57%",
       maxHeight: isSmallScreen ? screenWidth() / 2 : "auto",
     },
+    videoContainer: {
+      flex: 1,
+      paddingTop: isSmallerScreen ? 20 : 40,
+      backgroundColor: "black",
+      width: isSmallScreen ? screenWidth() - 30 : "57%",
+      minHeight: Platform.isWeb ? "auto" : screenWidth() / 2,
+    },
     video: {
       flex: 1,
       marginTop: Platform.isWeb ? 10 : 0,
       marginBottom: 40,
-      width: isSmallScreen ? screenWidth() - 30 : "57%",
-      minHeight: Platform.isWeb ? "auto" : screenWidth() / 2,
+      width: "100%",
+      height: "auto",
     },
   });
