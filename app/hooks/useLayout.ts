@@ -1,6 +1,6 @@
 import { useWindowDimensions } from "react-native";
 
-const breakpoints = {
+export const breakpoints = {
   smaller: 420,
   small: 1024,
   standard: 1920,
