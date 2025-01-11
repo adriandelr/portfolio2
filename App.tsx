@@ -32,6 +32,10 @@ import Platform from "./app/utils/Platform";
 
 SplashScreen.hide();
 
+// Disable logs for Web/Prod
+if (Platform.isWeb && process.env.NODE_ENV === "production")
+  console.log = console.warn = console.error = () => {};
+
 const Portfolio: FunctionComponent = () => {
   const [animationCompleted, setAnimationComplete] = useState<Boolean>(false);
   const changeAnimationStatus = (param: Boolean) => setAnimationComplete(param);
