@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import React, { FunctionComponent, useState, useRef } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -45,9 +45,10 @@ const Portfolio: FunctionComponent = () => {
 
   const scrollViewRef = useRef<IOScrollViewController>(null);
 
+  const { width } = useWindowDimensions();
   const IMG_HEIGHT =
-    screenWidth() <= breakpoints.standard
-      ? screenWidth() <= breakpoints.small
+    width <= breakpoints.standard
+      ? width <= breakpoints.small
         ? 200
         : 300
       : 470;
