@@ -17,7 +17,7 @@ import {
   IOScrollViewController,
 } from "react-native-intersection-observer";
 
-import { breakpoints, screenWidth } from "./app/hooks/useLayout";
+import { breakpoints } from "./app/hooks/useLayout";
 import useCachedResources from "./app/hooks/useCachedResources";
 import AnimatedSplashScreen from "./app/AnimatedSplashScreen";
 import Present from "./app/Present";
@@ -45,14 +45,14 @@ const Portfolio: FunctionComponent = () => {
 
   const scrollViewRef = useRef<IOScrollViewController>(null);
 
-  const { width } = useWindowDimensions();
+  const { width: screenWidth } = useWindowDimensions();
   const IMG_HEIGHT =
-    width <= breakpoints.standard
-      ? width <= breakpoints.small
+    screenWidth <= breakpoints.standard
+      ? screenWidth <= breakpoints.small
         ? 200
         : 300
       : 470;
-  const styles = setStyles(screenWidth(), IMG_HEIGHT);
+  const styles = setStyles(screenWidth, IMG_HEIGHT);
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {
       transform: [
