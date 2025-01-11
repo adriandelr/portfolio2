@@ -46,7 +46,11 @@ const Portfolio: FunctionComponent = () => {
   const scrollViewRef = useRef<IOScrollViewController>(null);
 
   const IMG_HEIGHT =
-    screenWidth() <= breakpoints.small ? 200 : breakpoints.standard ? 300 : 470;
+    screenWidth() <= breakpoints.standard
+      ? screenWidth() <= breakpoints.small
+        ? 200
+        : 300
+      : 470;
   const styles = setStyles(screenWidth(), IMG_HEIGHT);
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {
