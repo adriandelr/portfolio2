@@ -6,7 +6,7 @@ import LottieView from "lottie-react-native";
 import { InView } from "react-native-intersection-observer";
 
 import Linker from "./components/Linker";
-import { isSmallScreen, isSmallerScreen } from "./hooks/useLayout";
+import { isSmallerScreen, isSmallScreen } from "./hooks/useLayout";
 import Platform from "../app/utils/Platform";
 import { isInView } from "./hooks/useIsInView";
 import { expoDevURL } from "./constants/Expo";

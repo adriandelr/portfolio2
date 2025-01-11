@@ -5,7 +5,7 @@ import QRCode from "react-qr-code";
 
 import globalStyles from "./utils/Styles";
 import Linker from "./components/Linker";
-import { isSmallScreen, isSmallerScreen } from "./hooks/useLayout";
+import { isSmallerScreen, isSmallScreen } from "./hooks/useLayout";
 import Platform from "../app/utils/Platform";
 import { expoAppStoreURL, expoPlayStoreURL, expoURL } from "./constants/Expo";
 

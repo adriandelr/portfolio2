@@ -6,24 +6,24 @@ import { useSharedValue } from "react-native-reanimated";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 
 import { PROJECTS } from "./constants/Projects";
-import { screenWidth, isSmallScreen, isSmallerScreen } from "./hooks/useLayout";
+import { screenWidth, isSmallerScreen, isSmallScreen } from "./hooks/useLayout";
 import Platform from "../app/utils/Platform";
-
-const getMaxWidth = () => {
-  let width = Dimensions.get("window").width;
-  if (width > 737) width = 737;
-  return width;
-};
 
 const introVideo = require("../assets/video/portfolio-video-c.mp4");
 
 export default function Projects() {
-  const styles = setStyles(isSmallScreen(), isSmallerScreen());
+  const styles = setStyles(screenWidth(), isSmallScreen(), isSmallerScreen());
 
   const ref = React.useRef<ICarouselInstance>(null);
   const progress = useSharedValue<number>(0);
 
   const player = useVideoPlayer(introVideo);
+
+  const getMaxWidth = () => {
+    let width = Dimensions.get("window").width;
+    if (width > 737) width = 737;
+    return width;
+  };
 
   return (
     <View style={styles.container}>
@@ -85,7 +85,11 @@ export default function Projects() {
   );
 }
 
-const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
+const setStyles = (
+  screenWidth: number,
+  isSmallScreen: boolean,
+  isSmallerScreen: boolean
+) =>
   StyleSheet.create({
     container: {
       height: "auto",
@@ -128,18 +132,16 @@ const setStyles = (isSmallScreen: boolean, isSmallerScreen: boolean) =>
     },
     designImage: {
       marginTop: Platform.isWeb ? 40 : 0,
-      width: isSmallScreen ? screenWidth() - 30 : "57%",
-      maxHeight: isSmallScreen ? screenWidth() / 2 : "auto",
+      width: isSmallScreen ? screenWidth - 30 : "57%",
+      maxHeight: isSmallScreen ? screenWidth / 2 : "auto",
     },
     videoContainer: {
       flex: 1,
       marginTop: Platform.isWeb ? 20 : 0,
       marginBottom: Platform.isWeb ? 0 : 40,
       backgroundColor: "black",
-      width: isSmallScreen
-        ? screenWidth() - (isSmallerScreen ? 30 : 50)
-        : "57%",
-      minHeight: Platform.isWeb ? "auto" : screenWidth() / 2,
+      width: isSmallScreen ? screenWidth - (isSmallerScreen ? 30 : 50) : "57%",
+      minHeight: Platform.isWeb ? "auto" : screenWidth / 2,
     },
     video: {
       flex: 1,

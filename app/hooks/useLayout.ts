@@ -1,45 +1,29 @@
-import { Dimensions } from "react-native";
-import { useState, useEffect } from "react";
+import { useWindowDimensions } from "react-native";
 
-const windowWidth = Dimensions.get("window").width;
+const breakpoints = {
+  smaller: 420,
+  small: 1024,
+  standard: 1920,
+};
 
 export const screenWidth = (): number => {
-  const [width, setWidth] = useState(windowWidth);
-
-  useEffect(() => {
-    const subscription = Dimensions.addEventListener("change", ({ window }) => {
-      setWidth(window.width);
-    });
-    return () => subscription?.remove();
-  });
-
+  const { width } = useWindowDimensions();
   return width;
 };
 
-export const isStandardScreen = (): boolean => {
-  const breakpoint = 1920;
-  return handleWindowChange(breakpoint);
-};
-
-export const isSmallScreen = (): boolean => {
-  const breakpoint = 1024;
-  return handleWindowChange(breakpoint);
+const handleScreenChange = (breakpoint: number): boolean => {
+  const { width } = useWindowDimensions();
+  return width <= breakpoint;
 };
 
 export const isSmallerScreen = (): boolean => {
-  const breakpoint = 420;
-  return handleWindowChange(breakpoint);
+  return handleScreenChange(breakpoints.smaller);
 };
 
-const handleWindowChange = (breakpoint: number): boolean => {
-  const [width, setWidth] = useState(windowWidth <= breakpoint);
+export const isSmallScreen = (): boolean => {
+  return handleScreenChange(breakpoints.small);
+};
 
-  useEffect(() => {
-    const subscription = Dimensions.addEventListener("change", ({ window }) => {
-      setWidth(window.width <= breakpoint);
-    });
-    return () => subscription?.remove();
-  });
-
-  return width;
+export const isStandardScreen = (): boolean => {
+  return handleScreenChange(breakpoints.standard);
 };
